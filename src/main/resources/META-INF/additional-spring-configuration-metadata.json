@@ -1,0 +1,102 @@
+{"properties": [
+  {
+    "name": "management.endpoint.group.liveness.include",
+    "type": "java.lang.String",
+    "description": "A description for 'management.endpoint.group.liveness.include'"
+  },
+  {
+    "name": "management.endpoints.exposure.include",
+    "type": "java.lang.String",
+    "description": "A description for 'management.endpoints.exposure.include'"
+  },
+  {
+    "name": "management.endpoint.group.readiness.include",
+    "type": "java.lang.String",
+    "description": "A description for 'management.endpoint.group.readiness.include'"
+  },
+  {
+    "name": "management.endpoint.show-details",
+    "type": "java.lang.String",
+    "description": "A description for 'management.endpoint.show-details'"
+  },
+  {
+    "name": "management.endpoint.probes.enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'management.endpoint.probes.enabled'"
+  },
+  {
+    "name": "management.health.diskpace.enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'management.health.diskpace.enabled'"
+  },
+  {
+    "name": "message.exception",
+    "type": "java.lang.String",
+    "description": "A description for 'message.exception'"
+  },
+  {
+    "name": "springdoc.swagger-ui.tagSorter",
+    "type": "java.lang.String",
+    "description": "A description for 'springdoc.swagger-ui.tagSorter'"
+  },
+  {
+    "name": "spring.h2.console.enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.h2.console.enabled'"
+  },
+  {
+    "name": "spring.h2.console.path",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.h2.console.path'"
+  },
+  {
+    "name": "management.tracing.sampling.probability",
+    "type": "java.lang.String",
+    "description": "A description for 'management.tracing.sampling.probability'"
+  },
+  {
+    "name": "management.tracing.sampling.propagation",
+    "type": "java.lang.String",
+    "description": "A description for 'management.tracing.sampling.propagation'"
+  },
+  {
+    "name": "jwt.secret",
+    "type": "java.lang.String",
+    "description": "A description for 'jwt.secret'"
+  },
+  {
+    "name": "spring.flyway.enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.flyway.enabled'"
+  },
+  {
+    "name": "spring.flyway.validate-on-migrate",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.flyway.validate-on-migrate'"
+  },
+  {
+    "name": "spring.flyway.locations",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.flyway.locations'"
+  },
+  {
+    "name": "spring.flyway.user",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.flyway.user'"
+  },
+  {
+    "name": "spring.flyway.baseline-on-migrate",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.flyway.baseline-on-migrate'"
+  },
+  {
+    "name": "spring.flyway.password",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.flyway.password'"
+  },
+  {
+    "name": "spring.flyway.url",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.flyway.url'"
+  }
+]}

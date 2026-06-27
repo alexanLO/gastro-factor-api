@@ -2,6 +2,8 @@ package br.com.gastrofactorapi.infrastructure.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import br.com.gastrofactorapi.application.domain.service.RecipeService;
 import br.com.gastrofactorapi.ports.input.RecipeUseCase;
@@ -13,5 +15,10 @@ public class BeanConfig {
     @Bean
     public RecipeUseCase recipeUseCase(RecipePort recipePort) {
         return new RecipeService(recipePort);
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }
