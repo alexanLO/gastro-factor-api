@@ -1,0 +1,2 @@
+-- Migration inicial vazia
+-- Não faz nenhuma alteração
