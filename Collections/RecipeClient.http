@@ -1,0 +1,61 @@
+POST  http://localhost:8080/v1/recipes HTTP/1.1
+Content-Type: application/json
+
+{
+  "details": {
+    "name": "Nome da receita",
+    "servings": 4,
+    "category": "Prato principal"
+  },
+  "ingredients": [
+    {
+      "name": "Tomate",
+      "netWeight": "200",
+      "correctionFactor": "1.1",
+      "grossWeight": "220",
+      "cookingFactor": "0.9",
+      "totalQuantity": "198"
+    },
+    {
+      "name": "Tomate",
+      "netWeight": "200",
+      "correctionFactor": "1.1",
+      "grossWeight": "220",
+      "cookingFactor": "0.9",
+      "totalQuantity": "198"
+    },
+    {
+      "name": "Tomate",
+      "netWeight": "200",
+      "correctionFactor": "1.1",
+      "grossWeight": "220",
+      "cookingFactor": "0.9",
+      "totalQuantity": "198"
+    }
+  ],
+  "nutritional": {
+    "calories": "350",
+    "protein": "20",
+    "totalFat": "15",
+    "carbs": "30"
+  },
+  "preparationMethods": [
+    {
+      "title": "Cozinhar",
+      "description": "Cozinhe os ingredientes por 10 minutos."
+    },
+    {
+      "title": "Cozinhar",
+      "description": "Cozinhe os ingredientes por 10 minutos."
+    },
+    {
+      "title": "Cozinhar",
+      "description": "Cozinhe os ingredientes por 10 minutos."
+    }
+  ]
+}
+
+###
+
+GET http://localhost:8080/v1/recipes HTTP/1.1
+Content-Type: application/json
