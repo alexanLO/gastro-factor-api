@@ -1,0 +1,289 @@
+ID,Categoria,Nome Alimento,Fator Correcao FC,Fator Coccao FCy,Tipo Preparo,Porcao,Calorias,Proteina,Carboidrato,Gordura
+1,Aves,Peito de Frango,1.32,1.52,Cozido,1 unidade,207,14.3,8.4,3.8
+2,Aves,Peito de Frango,1.32,1.38,Assado,100g,154,32.9,36.0,22.3
+3,Aves,Peito de Frango,1.32,1.15,Grelhado,100g,128,2.8,14.8,11.3
+4,Aves,Peito de Frango,1.32,1.21,Frito,1 porção,94,24.0,35.9,26.6
+5,Aves,Peito de Frango,1.32,0.97,Cruo,100g,140,2.9,52.4,21.6
+6,Aves,Peito de Frango,1.32,1.19,Refogado,100g,266,25.8,16.7,11.4
+7,Aves,Coxa de Frango,1.37,1.78,Cozido,1 unidade,207,16.7,58.0,17.5
+8,Aves,Coxa de Frango,1.37,1.04,Assado,1 unidade,224,8.2,3.7,19.7
+9,Aves,Coxa de Frango,1.37,1.25,Grelhado,100g,230,26.3,32.6,1.7
+10,Aves,Coxa de Frango,1.37,0.9,Frito,1 porção,410,30.5,36.5,3.4
+11,Aves,Coxa de Frango,1.37,1.02,Cruo,100g,274,6.6,8.1,21.3
+12,Aves,Coxa de Frango,1.37,1.3,Refogado,1 unidade,430,16.1,34.5,21.7
+13,Aves,Sobrecoxa,1.14,2.06,Cozido,1 unidade,267,2.3,10.3,7.7
+14,Aves,Sobrecoxa,1.14,1.74,Assado,1 porção,308,36.3,44.9,27.7
+15,Aves,Sobrecoxa,1.14,1.5,Grelhado,100g,440,37.0,28.1,21.3
+16,Aves,Sobrecoxa,1.14,1.23,Frito,100g,446,16.0,37.0,6.5
+17,Aves,Sobrecoxa,1.14,0.99,Cruo,100g,297,8.2,40.1,6.5
+18,Aves,Sobrecoxa,1.14,1.28,Refogado,1 porção,375,20.7,10.1,8.0
+19,Aves,Asa de Frango,1.15,1.82,Cozido,1 unidade,448,17.0,11.8,10.6
+20,Aves,Asa de Frango,1.15,1.07,Assado,1 porção,177,8.8,0.4,13.0
+21,Aves,Asa de Frango,1.15,1.05,Grelhado,1 porção,259,14.8,58.7,24.0
+22,Aves,Asa de Frango,1.15,0.82,Frito,100g,84,36.8,46.9,15.2
+23,Aves,Asa de Frango,1.15,1.04,Cruo,1 unidade,367,21.3,50.3,18.9
+24,Aves,Asa de Frango,1.15,1.37,Refogado,100g,95,33.3,29.9,26.4
+25,Aves,Peru,1.08,1.57,Cozido,100g,369,15.5,12.9,27.6
+26,Aves,Peru,1.08,1.27,Assado,1 porção,177,10.3,16.6,19.6
+27,Aves,Peru,1.08,0.97,Grelhado,100g,55,4.9,51.2,26.2
+28,Aves,Peru,1.08,1.2,Frito,100g,83,34.4,37.7,22.3
+29,Aves,Peru,1.08,0.98,Cruo,100g,249,26.7,9.7,1.4
+30,Aves,Peru,1.08,1.23,Refogado,1 porção,261,13.0,53.4,19.3
+31,Aves,Chester,1.19,2.26,Cozido,1 unidade,122,31.4,49.1,26.6
+32,Aves,Chester,1.19,1.02,Assado,1 unidade,77,31.2,8.2,3.8
+33,Aves,Chester,1.19,1.02,Grelhado,100g,324,18.0,37.0,26.0
+34,Aves,Chester,1.19,0.91,Frito,100g,53,4.9,49.2,10.2
+35,Aves,Chester,1.19,1.03,Cruo,100g,253,2.5,32.2,4.1
+36,Aves,Chester,1.19,1.16,Refogado,1 unidade,178,34.7,57.6,9.1
+37,Bovinos,Patinho,1.04,2.05,Cozido,100g,236,5.9,55.5,6.2
+38,Bovinos,Patinho,1.04,1.14,Assado,1 porção,334,38.5,15.6,7.0
+39,Bovinos,Patinho,1.04,0.92,Grelhado,100g,436,6.9,32.4,10.4
+40,Bovinos,Patinho,1.04,0.91,Frito,1 unidade,160,3.3,31.5,26.6
+41,Bovinos,Patinho,1.04,1.03,Cruo,1 porção,293,19.7,52.8,19.9
+42,Bovinos,Patinho,1.04,1.12,Refogado,1 porção,247,4.1,19.5,0.5
+43,Bovinos,Alcatra,1.21,2.5,Cozido,100g,291,13.1,24.7,17.9
+44,Bovinos,Alcatra,1.21,1.65,Assado,1 unidade,336,32.0,49.6,10.4
+45,Bovinos,Alcatra,1.21,1.44,Grelhado,1 unidade,71,8.2,40.1,11.4
+46,Bovinos,Alcatra,1.21,0.96,Frito,100g,394,18.3,8.3,13.1
+47,Bovinos,Alcatra,1.21,0.96,Cruo,1 porção,308,20.7,35.4,20.2
+48,Bovinos,Alcatra,1.21,1.0,Refogado,100g,69,38.2,32.4,9.0
+49,Bovinos,Picanha,1.08,2.39,Cozido,1 porção,144,39.5,20.5,29.5
+50,Bovinos,Picanha,1.08,1.18,Assado,1 unidade,151,26.6,47.1,5.7
+51,Bovinos,Picanha,1.08,0.96,Grelhado,1 porção,95,23.9,27.1,28.2
+52,Bovinos,Picanha,1.08,0.94,Frito,100g,397,24.6,2.9,3.2
+53,Bovinos,Picanha,1.08,1.03,Cruo,1 unidade,213,30.3,15.1,17.4
+54,Bovinos,Picanha,1.08,1.08,Refogado,1 unidade,229,29.1,40.4,6.7
+55,Bovinos,Acém,1.13,2.73,Cozido,1 unidade,348,34.0,4.8,14.7
+56,Bovinos,Acém,1.13,1.37,Assado,1 unidade,385,25.6,5.3,12.9
+57,Bovinos,Acém,1.13,1.4,Grelhado,1 porção,313,30.5,1.1,4.6
+58,Bovinos,Acém,1.13,1.0,Frito,1 unidade,372,4.2,29.0,1.8
+59,Bovinos,Acém,1.13,1.0,Cruo,1 unidade,205,6.3,36.5,5.8
+60,Bovinos,Acém,1.13,1.09,Refogado,1 porção,227,6.3,50.0,15.3
+61,Bovinos,Músculo,1.07,2.06,Cozido,1 porção,148,17.2,48.1,16.0
+62,Bovinos,Músculo,1.07,1.69,Assado,1 unidade,322,35.0,48.4,3.5
+63,Bovinos,Músculo,1.07,1.35,Grelhado,1 unidade,285,33.2,10.6,0.2
+64,Bovinos,Músculo,1.07,0.92,Frito,1 unidade,404,3.5,18.1,0.5
+65,Bovinos,Músculo,1.07,0.98,Cruo,100g,343,30.0,52.0,7.0
+66,Bovinos,Músculo,1.07,1.16,Refogado,1 porção,385,17.7,20.0,29.6
+67,Bovinos,Cupim,1.39,2.23,Cozido,1 unidade,338,21.8,0.2,24.0
+68,Bovinos,Cupim,1.39,1.31,Assado,100g,194,15.4,5.2,6.8
+69,Bovinos,Cupim,1.39,1.36,Grelhado,100g,396,5.7,6.2,12.4
+70,Bovinos,Cupim,1.39,1.05,Frito,1 porção,125,1.0,8.3,17.3
+71,Bovinos,Cupim,1.39,1.04,Cruo,1 porção,139,32.7,37.2,1.0
+72,Bovinos,Cupim,1.39,1.31,Refogado,100g,226,29.5,24.0,0.0
+73,Suínos,Lombo Suíno,1.2,1.83,Cozido,100g,206,11.1,23.9,23.5
+74,Suínos,Lombo Suíno,1.2,1.48,Assado,1 porção,390,1.2,26.4,8.8
+75,Suínos,Lombo Suíno,1.2,1.1,Grelhado,100g,296,18.3,0.8,29.4
+76,Suínos,Lombo Suíno,1.2,0.96,Frito,1 porção,393,19.2,32.3,1.7
+77,Suínos,Lombo Suíno,1.2,1.0,Cruo,1 porção,194,7.1,42.8,9.7
+78,Suínos,Lombo Suíno,1.2,0.92,Refogado,1 porção,317,3.6,19.5,28.6
+79,Suínos,Costela Suína,1.2,1.48,Cozido,1 porção,196,24.2,37.6,5.2
+80,Suínos,Costela Suína,1.2,1.43,Assado,1 porção,256,6.2,50.9,22.3
+81,Suínos,Costela Suína,1.2,1.42,Grelhado,1 porção,118,31.8,32.3,3.7
+82,Suínos,Costela Suína,1.2,1.03,Frito,1 unidade,338,12.2,12.8,16.7
+83,Suínos,Costela Suína,1.2,0.96,Cruo,1 unidade,116,37.4,39.4,22.1
+84,Suínos,Costela Suína,1.2,1.26,Refogado,100g,388,21.7,40.2,17.4
+85,Suínos,Pernil,1.45,2.35,Cozido,1 unidade,189,20.5,31.9,24.7
+86,Suínos,Pernil,1.45,1.45,Assado,1 unidade,432,32.0,48.2,28.3
+87,Suínos,Pernil,1.45,0.99,Grelhado,1 porção,277,0.1,15.1,19.3
+88,Suínos,Pernil,1.45,0.91,Frito,1 unidade,58,28.5,7.5,1.1
+89,Suínos,Pernil,1.45,0.97,Cruo,1 unidade,60,11.6,25.8,27.4
+90,Suínos,Pernil,1.45,1.09,Refogado,1 unidade,164,14.4,43.2,7.9
+91,Suínos,Bacon,1.07,2.32,Cozido,1 porção,272,16.7,46.8,15.4
+92,Suínos,Bacon,1.07,1.14,Assado,100g,285,5.0,10.5,28.8
+93,Suínos,Bacon,1.07,1.36,Grelhado,1 porção,225,15.3,24.1,8.7
+94,Suínos,Bacon,1.07,1.11,Frito,1 porção,237,23.5,0.3,21.1
+95,Suínos,Bacon,1.07,0.98,Cruo,1 unidade,208,35.7,54.6,24.6
+96,Suínos,Bacon,1.07,0.99,Refogado,1 unidade,203,13.3,5.2,26.0
+97,Peixes,Salmão,1.31,2.79,Cozido,1 unidade,342,10.4,43.6,17.6
+98,Peixes,Salmão,1.31,1.1,Assado,1 unidade,236,5.9,56.6,10.7
+99,Peixes,Salmão,1.31,0.96,Grelhado,1 porção,63,31.8,52.6,4.4
+100,Peixes,Salmão,1.31,1.16,Frito,1 unidade,416,30.7,52.7,16.8
+101,Peixes,Salmão,1.31,0.97,Cruo,100g,349,11.2,45.2,0.6
+102,Peixes,Salmão,1.31,1.35,Refogado,1 unidade,118,7.0,33.8,10.2
+103,Peixes,Tilápia,1.11,2.19,Cozido,1 porção,297,26.3,39.1,26.2
+104,Peixes,Tilápia,1.11,1.57,Assado,1 unidade,307,29.0,59.6,26.7
+105,Peixes,Tilápia,1.11,0.97,Grelhado,100g,293,18.8,55.2,0.1
+106,Peixes,Tilápia,1.11,1.03,Frito,1 unidade,428,33.1,5.7,17.9
+107,Peixes,Tilápia,1.11,0.97,Cruo,1 porção,197,16.4,25.2,2.4
+108,Peixes,Tilápia,1.11,1.21,Refogado,1 unidade,136,20.7,16.2,12.3
+109,Peixes,Atum,1.48,2.11,Cozido,100g,104,11.0,51.9,6.6
+110,Peixes,Atum,1.48,1.75,Assado,100g,392,19.1,52.5,16.0
+111,Peixes,Atum,1.48,1.12,Grelhado,1 porção,245,1.8,50.7,9.9
+112,Peixes,Atum,1.48,1.11,Frito,100g,137,5.9,42.8,9.1
+113,Peixes,Atum,1.48,0.95,Cruo,100g,281,14.4,41.2,28.5
+114,Peixes,Atum,1.48,0.98,Refogado,1 porção,330,17.8,41.2,14.1
+115,Peixes,Sardinha,1.32,1.48,Cozido,100g,203,19.5,59.6,5.8
+116,Peixes,Sardinha,1.32,1.69,Assado,1 unidade,356,32.3,39.7,17.9
+117,Peixes,Sardinha,1.32,1.07,Grelhado,100g,374,6.4,0.5,15.0
+118,Peixes,Sardinha,1.32,0.94,Frito,1 porção,115,2.7,59.4,17.3
+119,Peixes,Sardinha,1.32,0.98,Cruo,100g,208,3.2,10.2,1.4
+120,Peixes,Sardinha,1.32,1.12,Refogado,100g,187,10.7,22.0,3.8
+121,Peixes,Bacalhau,1.41,1.71,Cozido,1 porção,296,35.1,40.8,0.4
+122,Peixes,Bacalhau,1.41,1.52,Assado,1 porção,425,38.2,12.6,6.8
+123,Peixes,Bacalhau,1.41,1.1,Grelhado,100g,372,3.1,57.8,6.0
+124,Peixes,Bacalhau,1.41,0.86,Frito,100g,184,19.6,55.2,26.0
+125,Peixes,Bacalhau,1.41,1.05,Cruo,100g,392,4.8,14.1,14.4
+126,Peixes,Bacalhau,1.41,1.26,Refogado,1 unidade,449,30.2,43.8,21.0
+127,Vegetais,Brócolis,1.25,2.64,Cozido,100g,239,22.1,55.2,24.9
+128,Vegetais,Brócolis,1.25,1.45,Assado,100g,193,6.0,45.6,5.5
+129,Vegetais,Brócolis,1.25,1.27,Grelhado,100g,312,9.5,29.1,16.5
+130,Vegetais,Brócolis,1.25,1.05,Frito,1 porção,75,26.8,4.3,16.7
+131,Vegetais,Brócolis,1.25,0.99,Cruo,1 unidade,149,32.1,55.0,10.4
+132,Vegetais,Brócolis,1.25,0.91,Refogado,1 unidade,245,38.2,25.5,10.6
+133,Vegetais,Cenoura,1.23,2.1,Cozido,1 porção,258,2.8,37.4,22.1
+134,Vegetais,Cenoura,1.23,1.79,Assado,1 porção,429,25.3,58.9,17.2
+135,Vegetais,Cenoura,1.23,1.13,Grelhado,100g,244,28.1,55.1,25.6
+136,Vegetais,Cenoura,1.23,1.29,Frito,1 unidade,105,31.7,31.5,3.1
+137,Vegetais,Cenoura,1.23,1.03,Cruo,100g,58,6.0,18.5,24.5
+138,Vegetais,Cenoura,1.23,1.37,Refogado,1 porção,342,13.7,52.0,10.9
+139,Vegetais,Batata,1.48,1.59,Cozido,1 unidade,160,6.7,49.9,27.4
+140,Vegetais,Batata,1.48,1.79,Assado,1 porção,100,17.4,4.1,22.6
+141,Vegetais,Batata,1.48,1.27,Grelhado,1 porção,398,5.1,48.9,12.6
+142,Vegetais,Batata,1.48,1.19,Frito,1 unidade,122,0.9,49.3,26.1
+143,Vegetais,Batata,1.48,0.95,Cruo,1 porção,284,10.5,4.6,0.1
+144,Vegetais,Batata,1.48,1.33,Refogado,1 unidade,223,1.3,32.6,2.5
+145,Vegetais,Batata Doce,1.37,2.07,Cozido,1 unidade,59,4.0,54.5,21.7
+146,Vegetais,Batata Doce,1.37,1.48,Assado,1 unidade,199,15.6,19.1,24.2
+147,Vegetais,Batata Doce,1.37,1.21,Grelhado,100g,373,0.0,57.1,3.3
+148,Vegetais,Batata Doce,1.37,1.19,Frito,100g,96,18.0,19.9,7.6
+149,Vegetais,Batata Doce,1.37,0.99,Cruo,100g,220,6.4,7.9,3.6
+150,Vegetais,Batata Doce,1.37,1.11,Refogado,1 unidade,177,35.7,47.1,25.7
+151,Vegetais,Abobrinha,1.49,2.11,Cozido,1 unidade,284,22.7,41.0,0.8
+152,Vegetais,Abobrinha,1.49,1.41,Assado,100g,424,36.1,53.4,16.3
+153,Vegetais,Abobrinha,1.49,1.11,Grelhado,100g,207,0.4,26.1,5.0
+154,Vegetais,Abobrinha,1.49,1.0,Frito,1 unidade,274,34.8,22.8,26.6
+155,Vegetais,Abobrinha,1.49,0.98,Cruo,100g,237,14.7,53.4,27.6
+156,Vegetais,Abobrinha,1.49,1.11,Refogado,100g,369,18.3,13.9,24.1
+157,Vegetais,Couve,1.24,2.0,Cozido,100g,351,10.9,14.1,23.2
+158,Vegetais,Couve,1.24,1.73,Assado,1 porção,227,39.0,15.0,9.0
+159,Vegetais,Couve,1.24,1.49,Grelhado,1 porção,173,27.0,45.4,24.5
+160,Vegetais,Couve,1.24,1.1,Frito,1 porção,189,9.3,18.2,25.3
+161,Vegetais,Couve,1.24,1.03,Cruo,1 unidade,184,26.8,49.6,8.6
+162,Vegetais,Couve,1.24,1.31,Refogado,1 unidade,135,23.4,36.8,24.2
+163,Frutas,Banana,1.32,1.86,Cozido,100g,269,36.5,7.9,22.1
+164,Frutas,Banana,1.32,1.68,Assado,1 unidade,97,37.3,53.3,27.8
+165,Frutas,Banana,1.32,1.3,Grelhado,100g,154,14.7,36.4,14.5
+166,Frutas,Banana,1.32,1.11,Frito,100g,186,12.0,19.6,1.6
+167,Frutas,Banana,1.32,1.01,Cruo,1 unidade,449,4.3,8.8,6.9
+168,Frutas,Banana,1.32,1.22,Refogado,100g,265,13.2,27.2,20.7
+169,Frutas,Maçã,1.31,2.63,Cozido,1 porção,113,8.2,16.6,4.1
+170,Frutas,Maçã,1.31,1.12,Assado,100g,293,2.5,8.3,18.1
+171,Frutas,Maçã,1.31,0.97,Grelhado,100g,383,38.3,17.4,11.8
+172,Frutas,Maçã,1.31,1.17,Frito,100g,177,20.2,54.9,7.3
+173,Frutas,Maçã,1.31,0.99,Cruo,1 porção,448,20.4,19.9,20.0
+174,Frutas,Maçã,1.31,1.38,Refogado,1 porção,318,0.7,32.8,6.8
+175,Frutas,Mamão,1.47,2.18,Cozido,100g,154,27.1,55.0,20.5
+176,Frutas,Mamão,1.47,1.65,Assado,100g,306,29.2,7.8,27.0
+177,Frutas,Mamão,1.47,1.3,Grelhado,1 porção,187,35.2,25.7,1.2
+178,Frutas,Mamão,1.47,1.17,Frito,1 porção,110,0.4,29.8,13.8
+179,Frutas,Mamão,1.47,1.04,Cruo,1 unidade,321,22.7,11.5,2.7
+180,Frutas,Mamão,1.47,0.94,Refogado,1 unidade,256,32.3,40.3,12.0
+181,Frutas,Laranja,1.09,2.16,Cozido,1 porção,104,35.2,31.9,12.9
+182,Frutas,Laranja,1.09,1.65,Assado,1 unidade,246,6.6,34.9,17.6
+183,Frutas,Laranja,1.09,1.48,Grelhado,100g,196,3.6,39.5,9.6
+184,Frutas,Laranja,1.09,1.02,Frito,100g,369,22.2,26.7,2.6
+185,Frutas,Laranja,1.09,1.03,Cruo,100g,155,36.7,14.5,25.9
+186,Frutas,Laranja,1.09,1.31,Refogado,100g,236,34.4,19.0,20.4
+187,Frutas,Manga,1.08,1.98,Cozido,1 porção,67,36.1,25.6,18.0
+188,Frutas,Manga,1.08,1.04,Assado,1 porção,123,19.5,21.4,22.3
+189,Frutas,Manga,1.08,1.2,Grelhado,100g,155,19.7,39.1,15.9
+190,Frutas,Manga,1.08,1.07,Frito,1 porção,283,19.9,43.5,14.8
+191,Frutas,Manga,1.08,1.01,Cruo,1 unidade,249,1.3,32.2,3.3
+192,Frutas,Manga,1.08,1.24,Refogado,1 porção,161,37.6,24.4,20.7
+193,Frutas,Abacaxi,1.18,2.69,Cozido,1 unidade,74,1.5,40.1,0.7
+194,Frutas,Abacaxi,1.18,1.45,Assado,1 porção,82,25.2,3.9,20.2
+195,Frutas,Abacaxi,1.18,1.32,Grelhado,100g,120,21.2,58.0,8.6
+196,Frutas,Abacaxi,1.18,0.8,Frito,1 porção,164,1.2,10.1,1.2
+197,Frutas,Abacaxi,1.18,0.95,Cruo,100g,367,35.8,7.4,3.6
+198,Frutas,Abacaxi,1.18,1.2,Refogado,100g,340,9.1,23.6,20.8
+199,Grãos,Arroz Branco,1.18,2.76,Cozido,1 porção,106,15.3,45.5,12.2
+200,Grãos,Arroz Branco,1.18,1.78,Assado,100g,390,20.7,28.0,20.7
+201,Grãos,Arroz Branco,1.18,1.07,Grelhado,1 unidade,200,14.8,15.8,21.5
+202,Grãos,Arroz Branco,1.18,0.85,Frito,1 unidade,199,35.2,59.5,2.6
+203,Grãos,Arroz Branco,1.18,1.02,Cruo,1 porção,354,27.9,7.7,8.7
+204,Grãos,Arroz Branco,1.18,1.0,Refogado,100g,247,33.6,6.6,11.0
+205,Grãos,Arroz Integral,1.17,2.18,Cozido,1 porção,395,21.8,23.7,22.2
+206,Grãos,Arroz Integral,1.17,1.72,Assado,100g,175,36.9,37.6,9.4
+207,Grãos,Arroz Integral,1.17,1.22,Grelhado,1 unidade,90,22.2,37.1,3.1
+208,Grãos,Arroz Integral,1.17,1.03,Frito,1 unidade,165,15.2,59.2,4.8
+209,Grãos,Arroz Integral,1.17,1.0,Cruo,1 unidade,282,5.4,44.7,4.1
+210,Grãos,Arroz Integral,1.17,1.04,Refogado,100g,57,31.8,51.4,22.8
+211,Grãos,Feijão Carioca,1.22,2.76,Cozido,100g,56,11.6,30.0,27.0
+212,Grãos,Feijão Carioca,1.22,1.01,Assado,100g,425,5.4,54.7,11.4
+213,Grãos,Feijão Carioca,1.22,1.03,Grelhado,1 porção,140,14.7,48.8,15.4
+214,Grãos,Feijão Carioca,1.22,1.02,Frito,1 porção,283,14.4,54.2,4.0
+215,Grãos,Feijão Carioca,1.22,0.95,Cruo,100g,230,29.2,58.0,16.3
+216,Grãos,Feijão Carioca,1.22,1.21,Refogado,1 porção,192,32.0,16.0,24.6
+217,Grãos,Lentilha,1.14,1.54,Cozido,1 porção,123,33.3,58.5,26.9
+218,Grãos,Lentilha,1.14,1.11,Assado,100g,380,7.6,41.9,1.2
+219,Grãos,Lentilha,1.14,1.33,Grelhado,1 porção,393,32.5,30.8,7.8
+220,Grãos,Lentilha,1.14,1.22,Frito,100g,303,27.6,10.1,5.4
+221,Grãos,Lentilha,1.14,0.99,Cruo,1 porção,111,39.9,57.3,27.8
+222,Grãos,Lentilha,1.14,0.98,Refogado,1 unidade,397,11.3,41.9,25.3
+223,Grãos,Grão-de-bico,1.29,2.27,Cozido,100g,290,25.5,37.0,24.9
+224,Grãos,Grão-de-bico,1.29,1.14,Assado,1 porção,445,15.4,15.6,19.3
+225,Grãos,Grão-de-bico,1.29,1.03,Grelhado,100g,417,22.3,1.5,0.2
+226,Grãos,Grão-de-bico,1.29,1.03,Frito,1 porção,57,8.0,2.7,10.9
+227,Grãos,Grão-de-bico,1.29,1.0,Cruo,1 unidade,115,10.1,55.3,5.1
+228,Grãos,Grão-de-bico,1.29,1.12,Refogado,1 unidade,402,28.5,6.1,22.5
+229,Grãos,Aveia,1.35,1.83,Cozido,100g,239,29.8,43.9,21.0
+230,Grãos,Aveia,1.35,1.29,Assado,1 unidade,319,29.4,35.0,16.7
+231,Grãos,Aveia,1.35,1.5,Grelhado,100g,85,28.4,38.4,1.1
+232,Grãos,Aveia,1.35,1.04,Frito,1 porção,295,28.1,27.1,22.9
+233,Grãos,Aveia,1.35,1.02,Cruo,1 porção,281,15.6,35.1,10.8
+234,Grãos,Aveia,1.35,0.9,Refogado,1 unidade,58,17.1,55.9,3.2
+235,Massas,Macarrão,1.05,2.52,Cozido,1 porção,128,1.8,49.8,4.9
+236,Massas,Macarrão,1.05,1.19,Assado,1 porção,204,11.4,45.3,24.2
+237,Massas,Macarrão,1.05,1.29,Grelhado,100g,343,24.6,24.8,20.9
+238,Massas,Macarrão,1.05,1.01,Frito,100g,196,19.6,58.1,30.0
+239,Massas,Macarrão,1.05,0.99,Cruo,1 porção,112,37.6,38.5,1.2
+240,Massas,Macarrão,1.05,1.27,Refogado,100g,239,12.1,24.2,2.3
+241,Massas,Lasanha,1.13,2.74,Cozido,100g,271,18.8,44.4,15.1
+242,Massas,Lasanha,1.13,1.45,Assado,1 porção,189,0.6,5.7,3.2
+243,Massas,Lasanha,1.13,1.25,Grelhado,1 unidade,308,26.8,47.6,3.0
+244,Massas,Lasanha,1.13,1.17,Frito,100g,190,37.4,17.2,1.8
+245,Massas,Lasanha,1.13,1.04,Cruo,1 porção,298,4.7,48.3,17.7
+246,Massas,Lasanha,1.13,1.19,Refogado,1 porção,127,21.2,5.3,4.3
+247,Massas,Nhoque,1.09,1.55,Cozido,1 porção,166,38.9,23.9,3.4
+248,Massas,Nhoque,1.09,1.34,Assado,1 unidade,297,36.2,22.0,1.3
+249,Massas,Nhoque,1.09,0.98,Grelhado,100g,366,28.0,32.6,27.2
+250,Massas,Nhoque,1.09,1.07,Frito,1 porção,83,28.1,29.7,27.7
+251,Massas,Nhoque,1.09,0.96,Cruo,100g,169,0.5,8.2,26.5
+252,Massas,Nhoque,1.09,0.92,Refogado,1 unidade,403,31.2,49.9,14.1
+253,Laticínios,Leite,1.33,2.21,Cozido,100g,103,1.4,17.7,2.1
+254,Laticínios,Leite,1.33,1.32,Assado,100g,284,17.4,15.6,27.4
+255,Laticínios,Leite,1.33,1.37,Grelhado,1 unidade,394,8.7,5.9,11.5
+256,Laticínios,Leite,1.33,0.87,Frito,1 porção,163,12.3,41.8,0.0
+257,Laticínios,Leite,1.33,0.99,Cruo,1 unidade,446,31.4,42.2,13.7
+258,Laticínios,Leite,1.33,1.05,Refogado,1 porção,221,31.4,42.3,29.8
+259,Laticínios,Queijo Mussarela,1.04,1.78,Cozido,1 unidade,144,4.4,10.7,27.5
+260,Laticínios,Queijo Mussarela,1.04,1.35,Assado,1 unidade,110,31.8,26.4,10.0
+261,Laticínios,Queijo Mussarela,1.04,0.91,Grelhado,1 unidade,304,38.8,47.2,20.5
+262,Laticínios,Queijo Mussarela,1.04,0.93,Frito,1 unidade,299,13.9,57.8,22.2
+263,Laticínios,Queijo Mussarela,1.04,1.02,Cruo,100g,226,9.2,47.7,0.7
+264,Laticínios,Queijo Mussarela,1.04,1.34,Refogado,1 unidade,227,18.1,37.5,25.4
+265,Laticínios,Iogurte Natural,1.2,1.54,Cozido,1 unidade,235,0.7,17.0,20.8
+266,Laticínios,Iogurte Natural,1.2,1.38,Assado,1 unidade,378,34.2,53.7,22.1
+267,Laticínios,Iogurte Natural,1.2,1.38,Grelhado,100g,213,10.2,58.0,26.5
+268,Laticínios,Iogurte Natural,1.2,1.02,Frito,1 unidade,50,29.6,19.0,9.7
+269,Laticínios,Iogurte Natural,1.2,1.01,Cruo,1 porção,409,12.7,4.7,17.5
+270,Laticínios,Iogurte Natural,1.2,1.04,Refogado,100g,446,27.6,43.0,10.0
+271,Panificação,Pão Francês,1.31,2.51,Cozido,1 porção,402,23.4,13.2,21.2
+272,Panificação,Pão Francês,1.31,1.12,Assado,1 unidade,331,15.7,13.2,4.1
+273,Panificação,Pão Francês,1.31,1.28,Grelhado,1 porção,417,12.8,38.3,19.1
+274,Panificação,Pão Francês,1.31,0.81,Frito,100g,373,22.7,30.9,17.6
+275,Panificação,Pão Francês,1.31,0.99,Cruo,100g,371,19.5,19.4,2.5
+276,Panificação,Pão Francês,1.31,1.02,Refogado,1 unidade,205,4.3,33.2,22.1
+277,Panificação,Pão Integral,1.23,2.18,Cozido,1 porção,106,0.4,3.8,14.0
+278,Panificação,Pão Integral,1.23,1.75,Assado,1 porção,279,37.4,39.0,16.0
+279,Panificação,Pão Integral,1.23,1.16,Grelhado,1 porção,324,35.5,1.5,6.4
+280,Panificação,Pão Integral,1.23,1.14,Frito,100g,315,38.7,52.7,2.7
+281,Panificação,Pão Integral,1.23,1.01,Cruo,1 unidade,414,3.5,19.2,11.1
+282,Panificação,Pão Integral,1.23,0.92,Refogado,1 porção,223,22.7,4.7,5.7
+283,Panificação,Croissant,1.27,1.45,Cozido,1 unidade,439,33.8,21.7,20.3
+284,Panificação,Croissant,1.27,1.77,Assado,100g,295,22.2,52.8,21.6
+285,Panificação,Croissant,1.27,1.33,Grelhado,1 unidade,440,17.0,52.0,23.0
+286,Panificação,Croissant,1.27,1.15,Frito,1 unidade,142,22.3,56.3,23.2
+287,Panificação,Croissant,1.27,1.03,Cruo,1 porção,68,33.3,9.7,14.3
+288,Panificação,Croissant,1.27,1.31,Refogado,1 porção,204,30.2,3.0,8.5
