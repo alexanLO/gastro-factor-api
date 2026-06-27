@@ -117,7 +117,7 @@ spring:
   # Flyway
   #==============================
   flyway:
-    enabled: true
+    enabled: false
     url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:GastroFactor}
     user: ${DB_USER:postgres}
     password: ${DB_PASSWORD:admin}
