@@ -23,51 +23,52 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    private final RateLimitFilter rateLimitFilter;
-    private final JwtAuthenticationFilter jwtFilter;
+	private final RateLimitFilter rateLimitFilter;
+	private final JwtAuthenticationFilter jwtFilter;
 
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration config = new CorsConfiguration();
+	@Bean
+	public CorsConfigurationSource corsConfigurationSource() {
+		CorsConfiguration config = new CorsConfiguration();
 
-        config.setAllowedOrigins(List.of(
-                "http://localhost:4200",
-                "https://gastrofactor-old.onrender.com"));
+		config.setAllowedOrigins(List.of(
+				"http://localhost:4200",
+				"https://gastrofactor-old.onrender.com"));
 
-        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        config.setAllowedHeaders(List.of("*"));
-        config.setAllowCredentials(true);
+		config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+		config.setAllowedHeaders(List.of("*"));
+		config.setAllowCredentials(true);
 
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", config);
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", config);
 
-        return source;
-    }
+		return source;
+	}
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http)
-            throws Exception {
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http)
+			throws Exception {
 
-        http
-                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
-                .csrf(csrf -> csrf.disable())
-                .headers(headers -> headers.frameOptions(
-                        frame -> frame.disable()))
-                .httpBasic(AbstractHttpConfigurer::disable)
-                .sessionManagement(session -> session.sessionCreationPolicy(
-                        SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll()
-                        .requestMatchers("/v1/auth/**").permitAll()
-                        .requestMatchers("/v1/calculadora/**").permitAll()
-                        .requestMatchers("/v1/recipes/**").permitAll()
-                        .requestMatchers("/h2-console/**").permitAll()
-                        .anyRequest().authenticated())
-                .addFilterBefore(
-                        jwtFilter,
-                        UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(rateLimitFilter, JwtAuthenticationFilter.class);
+		http
+				.cors(cors -> cors.configurationSource(corsConfigurationSource()))
+				.csrf(csrf -> csrf.disable())
+				.headers(headers -> headers.frameOptions(
+						frame -> frame.disable()))
+				.httpBasic(AbstractHttpConfigurer::disable)
+				.sessionManagement(session -> session.sessionCreationPolicy(
+						SessionCreationPolicy.STATELESS))
+				.authorizeHttpRequests(auth -> auth
+						.requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**")
+						.permitAll()
+						.requestMatchers("/v1/auth/**").permitAll()
+						.requestMatchers("/v1/calculator/**").permitAll()
+						.requestMatchers("/v1/recipes/**").permitAll()
+						.requestMatchers("/h2-console/**").permitAll()
+						.anyRequest().authenticated())
+				.addFilterBefore(
+						jwtFilter,
+						UsernamePasswordAuthenticationFilter.class)
+				.addFilterBefore(rateLimitFilter, JwtAuthenticationFilter.class);
 
-        return http.build();
-    }
+		return http.build();
+	}
 }
