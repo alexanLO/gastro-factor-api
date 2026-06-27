@@ -30,9 +30,10 @@ public class SecurityConfig {
 	public CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration config = new CorsConfiguration();
 
+		// Domínios permitidos (inclui produção e local)
 		config.setAllowedOrigins(List.of(
 				"http://localhost:4200",
-				"https://gastrofactor-old.onrender.com"));
+				"https://gastrofactor.onrender.com"));
 
 		config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
 		config.setAllowedHeaders(List.of("*"));
@@ -45,28 +46,21 @@ public class SecurityConfig {
 	}
 
 	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity http)
-			throws Exception {
-
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 				.cors(cors -> cors.configurationSource(corsConfigurationSource()))
 				.csrf(csrf -> csrf.disable())
-				.headers(headers -> headers.frameOptions(
-						frame -> frame.disable()))
-				.httpBasic(AbstractHttpConfigurer::disable)
-				.sessionManagement(session -> session.sessionCreationPolicy(
-						SessionCreationPolicy.STATELESS))
+				.headers(headers -> headers.frameOptions(frame -> frame.disable()))
+				.httpBasic(httpBasic -> httpBasic.disable())
+				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.authorizeHttpRequests(auth -> auth
-						.requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**")
-						.permitAll()
+						.requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll()
 						.requestMatchers("/v1/auth/**").permitAll()
 						.requestMatchers("/v1/calculator/**").permitAll()
 						.requestMatchers("/v1/recipes/**").permitAll()
 						.requestMatchers("/h2-console/**").permitAll()
 						.anyRequest().authenticated())
-				.addFilterBefore(
-						jwtFilter,
-						UsernamePasswordAuthenticationFilter.class)
+				.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
 				.addFilterBefore(rateLimitFilter, JwtAuthenticationFilter.class);
 
 		return http.build();
