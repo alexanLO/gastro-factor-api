@@ -1,0 +1,120 @@
+#=========================
+# Project
+#=========================
+info:
+  app:
+    name: "@project.name@"
+    description: "@project.description@"
+    version: "@project.version@"
+    
+#=============================================
+# Actuator Config
+#=============================================
+management: 
+  endpoints:
+  # DESABILITA TODOS OS ENDPOINTS DO ACTUADOR
+    access:
+      default: none
+    web:
+    # ALTERA O PATH DO ACTUADOR
+      base-path: /
+      exposure:
+        # HABILITA APENAS O ENDPOINT HEALTH
+        include: health
+  endpoint:
+    health:
+      # HABILITA O ENDPOINT ?/health?
+      access: UNRESTRICTED
+      # Especifica os itens adicionais à serem monitorados pelo readiness
+      group:
+        liveness:
+          include: livenessState, ping
+        readiness:
+          # * CUIDADO: a escolha de realizar verificações externas deve ser realizada com muito cuidado e pode causar efeitos colaterais
+          include: readinessState, ping
+      # HABILITA PARA RETORNAR O CAMPO 'DETAILS' AO REQUISITAR /health
+      show-details: always
+      # HABILITA PROBES - LIVENESS CHECK e READINESS CHECK
+      probes:
+        enabled: true
+
+  health:
+    ping:
+      enabled: true
+    
+    # DESABILITADO PARA NÃO RETORNAR INFORMAÇÕES DO ATRIBUTO 'diskpace' AO REQUISITAR /health
+    diskpace:
+      enabled: false
+
+    # HABILITA LIVENESS CHECK PARA KUBERNATES
+    livenessState:
+      enabled: true
+
+    # HABILITA READNESS CHECK PARA KUBERNATES
+    readinessState:
+      enabled: true
+
+message:
+  exception: 'classpath/message/git'
+
+#=========================
+# Logs
+#========================= 
+logging:
+  level:
+    root: info
+    okhttp3: off
+    org:
+      springframework: info
+
+#=========================
+# Swagger
+#========================= 
+springdoc:
+  pathsToMatch: /**
+  swagger-ui: 
+    enabled: true
+    tagSorter: alpha
+
+#=========================
+# Server
+#========================= 
+server:
+  port: ${SERVER_PORT:8080}
+  shutdown: IMMEDIATE
+
+#=========================
+# H2
+#========================= 
+spring:
+    datasource:
+        driver-class-name: org.h2.Driver
+        url: jdbc:h2:mem:testdb
+        username: sa
+        password: 
+    sql:
+        init:
+            mode: always
+            continue-on-error: true
+            data-locations: classpath:db/migrations/*.sql
+    h2:
+        console:
+            enabled: true
+            path: /h2-console
+
+#=========================
+# JPA
+#=========================
+    jpa:
+        defer-datasource-initialization: ${CARREGAR_SCRIPT_BRANCO:true}
+        database-platform: org.hibernate.dialect.H2Dialect
+        properties:
+            hibernate:
+                show-sql: true
+                format-sql: true  
+
+#==============================
+# Flyway
+#==============================
+    flyway:
+        enabled: false

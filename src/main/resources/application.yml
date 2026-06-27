@@ -1,0 +1,133 @@
+#=========================
+# Project
+#=========================
+info:
+  app:
+    name: "@project.name@"
+    description: "@project.description@"
+    version: "@project.version@"
+    
+#=============================================
+# Actuator Config
+#=============================================
+management:
+  endpoints:
+    # DESABILITA TODOS OS ENDPOINTS DO ACTUADOR
+    access:
+      default: none
+    web:
+      # ALTERA O PATH DO ACTUADOR
+      base-path: /
+    exposure:
+      # HABILITA APENAS O ENDPOINT HEALTH
+      include: health
+  endpoint:
+    health:
+      # HABILITA O ENDPOINT ?/health?
+      access: read-only
+    # Especifica os itens adicionais à serem monitorados pelo readiness
+    group:
+      liveness:
+        include: livenessState, ping
+      readiness:
+        # * CUIDADO: a escolha de realizar verificações externas deve ser realizada com muito cuidado e pode causar efeitos colaterais
+        include: readinessState, ping
+    # HABILITA PARA RETORNAR O CAMPO 'DETAILS' AO REQUISITAR /health
+    show-details: never
+    # HABILITA PROBES - LIVENESS CHECK e READINESS CHECK
+    probes:
+      enabled: true
+
+  health:
+    ping:
+      enabled: true
+
+    # DESABILITADO PARA NÃO RETORNAR INFORMAÇÕES DO ATRIBUTO 'diskpace' AO REQUISITAR /health
+    diskpace:
+      enabled: false
+
+    # HABILITA LIVENESS CHECK PARA KUBERNATES
+    livenessState:
+      enabled: true
+
+    # HABILITA READNESS CHECK PARA KUBERNATES
+    readinessState:
+      enabled: true
+
+  #Rastreabilidade com Micrometer
+  tracing:
+    sampling:
+      probability: 1.0
+      propagation: w3c
+
+message:
+  exception: "classpath/message/git"
+
+#=========================
+# Swagger
+#=========================
+springdoc:
+  pathsToMatch: /**
+  swagger-ui:
+    enabled: true
+    tagSorter: alpha
+
+#=========================
+# Server
+#=========================
+server:
+  port: ${SERVER_PORT:8080}
+  shutdown: GRACEFUL
+
+#=========================
+# Postgress
+#=========================
+# * Depois configurar as variaveis db_host, db_port e etc em um ambiente de deploy
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: SEU_CLIENT_ID
+            client-secret: SEU_CLIENT_SECRET
+            scope: profile,email
+  output:
+    ansi:
+      enabled: ALWAYS
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:GastroFactor}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASS:admin}
+
+  #=========================
+  # JPA
+  #=========================
+  jpa:
+    properties:
+      hibernate:
+        physical-naming-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        jdbc:
+          batch_size: 1000
+        order_insert: true
+        order_update: true
+
+  #==============================
+  # Flyway
+  #==============================
+  flyway:
+    enabled: true
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:GastroFactor}
+    user: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:admin}
+
+    locations: classpath:db/migrations
+    baseline-on-migrate: true
+    validate-on-migrate: true
+
+#==============================
+# JWT
+#==============================
+jwt:
+  secret: ${JWT_SECRET:"minha_chave_super_secreta_com_mais_de_32_caracteres_123456"}
