@@ -262,7 +262,7 @@ Comando validado:
 - [X] Reconfigurar SecurityConfig com autenticacao em /v1/recipes e /v1/calculator.
 - [X] Corrigir regra de RateLimitConfig (capacity).
 - [X] Corrigir RecipeController (RequestBody e retorno coerente).
-- [ ] Adicionar validacoes em RecipeRequest e filhos.
+- [X] Adicionar validacoes em RecipeRequest e filhos.
 - [ ] Habilitar Flyway e escrever migracoes reais.
 - [ ] Criar indice unico para email.
 - [ ] Criar suites de teste de dominio, seguranca e integracao.
