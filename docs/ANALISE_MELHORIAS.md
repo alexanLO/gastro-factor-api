@@ -263,7 +263,7 @@ Comando validado:
 - [X] Corrigir regra de RateLimitConfig (capacity).
 - [X] Corrigir RecipeController (RequestBody e retorno coerente).
 - [X] Adicionar validacoes em RecipeRequest e filhos.
-- [ ] Habilitar Flyway e escrever migracoes reais.
+- [X] Habilitar Flyway e escrever migracoes reais.
 - [ ] Criar indice unico para email.
 - [ ] Criar suites de teste de dominio, seguranca e integracao.
 - [ ] Endurecer application-default para uso local apenas.

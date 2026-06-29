@@ -94,9 +94,7 @@ spring:
         password: 
     sql:
         init:
-            mode: always
-            continue-on-error: true
-            data-locations: classpath:db/migrations/*.sql
+        mode: never
     h2:
         console:
             enabled: true
@@ -117,4 +115,6 @@ spring:
 # Flyway
 #==============================
     flyway:
-        enabled: false
+      enabled: true
+      baseline-on-migrate: true
+      validate-on-migrate: true

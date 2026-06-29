@@ -120,10 +120,10 @@ spring:
     init:
       mode: never
   flyway:
-    enabled: false
+    enabled: true
     url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:GastroFactor}
     user: ${DB_USER:postgres}
-    password: ${DB_PASSWORD:admin}
+    password: ${DB_PASS:admin}
 
     locations: classpath:db/migrations
     baseline-on-migrate: true
