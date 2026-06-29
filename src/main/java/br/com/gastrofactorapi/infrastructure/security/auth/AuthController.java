@@ -130,7 +130,7 @@ public class AuthController {
         LocalDateTime expiration = jwtUtils.extractExpiration(accessToken);
 
         JwtBlacklistEntity entity = JwtBlacklistEntity.builder()
-                .token(refreshToken)
+            .token(accessToken)
                 .expiresAt(expiration)
                 .build();
 
