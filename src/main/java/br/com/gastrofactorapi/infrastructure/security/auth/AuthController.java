@@ -9,12 +9,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.gastrofactorapi.infrastructure.exceptions.BusinessException;
 import br.com.gastrofactorapi.infrastructure.security.JwtUtils;
 import br.com.gastrofactorapi.infrastructure.security.auth.dto.AuthResponse;
+import br.com.gastrofactorapi.infrastructure.security.auth.dto.LoginRequest;
+import br.com.gastrofactorapi.infrastructure.security.auth.dto.LogoutRequest;
+import br.com.gastrofactorapi.infrastructure.security.auth.dto.RegisterRequest;
 import br.com.gastrofactorapi.infrastructure.security.auth.entity.JwtBlacklistEntity;
 import br.com.gastrofactorapi.infrastructure.security.auth.entity.RefreshTokenEntity;
 import br.com.gastrofactorapi.infrastructure.security.auth.entity.UserEntity;
@@ -22,6 +26,7 @@ import br.com.gastrofactorapi.infrastructure.security.auth.enums.ProvidersEnum;
 import br.com.gastrofactorapi.infrastructure.security.auth.repository.JwtBlacklistRepository;
 import br.com.gastrofactorapi.infrastructure.security.auth.repository.RefreshTokenRepository;
 import br.com.gastrofactorapi.infrastructure.security.auth.repository.UserRepository;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -38,18 +43,22 @@ public class AuthController {
     private final PasswordEncoder passwordEncoder;
 
     @PostMapping("/register")
-    public ResponseEntity<AuthResponse> register(@RequestBody UserEntity entity) {
-        log.info("Chamando requisição para o cadastro do usuario com nome = {} e email = {}", entity.getName(),
-                entity.getEmail());
+        public ResponseEntity<AuthResponse> register(@Valid @RequestBody RegisterRequest request) {
+        log.info("Chamando requisição para o cadastro do usuario com nome = {} e email = {}", request.name(),
+            request.email());
 
-        userRepository.findByEmail(entity.getEmail())
+        userRepository.findByEmail(request.email())
                 .ifPresent(user -> {
                     throw new BusinessException(
                             HttpStatus.CONFLICT.value(),
                             "Já existe um usuário com este email.");
                 });
 
-        entity.setPassword(passwordEncoder.encode(entity.getPassword()));
+        UserEntity entity = new UserEntity();
+        entity.setName(request.name());
+        entity.setEmail(request.email());
+        entity.setPassword(passwordEncoder.encode(request.password()));
+        entity.setOccupation(request.occupation());
         entity.setProvider(ProvidersEnum.LOCAL.name());
         entity.setRole("USER");
 
@@ -62,13 +71,13 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<AuthResponse> login(@RequestBody UserEntity entity) {
-        log.info("Chamando requisição para logar usuario com email: {}", entity.getEmail());
+    public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest request) {
+        log.info("Chamando requisição para logar usuario com email: {}", request.email());
 
-        var user = userRepository.findByEmail(entity.getEmail())
+        var user = userRepository.findByEmail(request.email())
                 .orElseThrow(() -> new BusinessException(HttpStatus.UNAUTHORIZED.value(), "Email ou senha invalida."));
 
-        boolean passwordMatches = passwordEncoder.matches(entity.getPassword(), user.getPassword());
+        boolean passwordMatches = passwordEncoder.matches(request.password(), user.getPassword());
 
         if (!passwordMatches) {
             throw new BusinessException(HttpStatus.UNAUTHORIZED.value(), "Email ou senha inválidos");
@@ -104,10 +113,18 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
-    @PostMapping("/logout/{accessToken}/{refreshToken}")
-    public ResponseEntity<Void> logout(@PathVariable("accessToken") String accessToken,
-            @PathVariable("refreshToken") String refreshToken) {
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout(
+            @RequestHeader(value = "Authorization", required = false) String authorization,
+            @Valid @RequestBody LogoutRequest request) {
         log.info("Chamando requisição para logout.");
+
+        if (authorization == null || authorization.isBlank() || !authorization.startsWith("Bearer ")) {
+            throw new BusinessException(HttpStatus.UNAUTHORIZED.value(), "Access token inválido");
+        }
+
+        String accessToken = authorization.substring(7);
+        String refreshToken = request.refreshToken();
 
         RefreshTokenEntity refreshTokenResponse = refreshTokenRepository.findByToken(refreshToken)
                 .orElseThrow(() -> new BusinessException(HttpStatus.UNAUTHORIZED.value(), "Refresh token inválido"));
@@ -119,7 +136,7 @@ public class AuthController {
         LocalDateTime expiration = jwtUtils.extractExpiration(accessToken);
 
         JwtBlacklistEntity entity = JwtBlacklistEntity.builder()
-                .token(refreshToken)
+            .token(accessToken)
                 .expiresAt(expiration)
                 .build();
 

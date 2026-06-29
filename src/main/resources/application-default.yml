@@ -24,7 +24,7 @@ management:
   endpoint:
     health:
       # HABILITA O ENDPOINT ?/health?
-      access: UNRESTRICTED
+      access: read-only
       # Especifica os itens adicionais à serem monitorados pelo readiness
       group:
         liveness:
@@ -33,7 +33,7 @@ management:
           # * CUIDADO: a escolha de realizar verificações externas deve ser realizada com muito cuidado e pode causar efeitos colaterais
           include: readinessState, ping
       # HABILITA PARA RETORNAR O CAMPO 'DETAILS' AO REQUISITAR /health
-      show-details: always
+      show-details: never
       # HABILITA PROBES - LIVENESS CHECK e READINESS CHECK
       probes:
         enabled: true
@@ -81,40 +81,50 @@ springdoc:
 #========================= 
 server:
   port: ${SERVER_PORT:8080}
-  shutdown: IMMEDIATE
+  shutdown: GRACEFUL
 
 #=========================
 # H2
 #========================= 
 spring:
-    datasource:
-        driver-class-name: org.h2.Driver
-        url: jdbc:h2:mem:testdb
-        username: sa
-        password: 
-    sql:
-        init:
-            mode: always
-            continue-on-error: true
-            data-locations: classpath:db/migrations/*.sql
-    h2:
-        console:
-            enabled: true
-            path: /h2-console
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+  sql:
+    init:
+      mode: never
+  h2:
+    console:
+      enabled: false
+      path: /h2-console
 
 #=========================
 # JPA
 #=========================
-    jpa:
-        defer-datasource-initialization: ${CARREGAR_SCRIPT_BRANCO:true}
-        database-platform: org.hibernate.dialect.H2Dialect
-        properties:
-            hibernate:
-                show-sql: true
-                format-sql: true  
+  jpa:
+    defer-datasource-initialization: ${CARREGAR_SCRIPT_BRANCO:true}
+    database-platform: org.hibernate.dialect.H2Dialect
+    open-in-view: false
+    properties:
+      hibernate:
+        show-sql: false
+        format-sql: false
 
 #==============================
 # Flyway
 #==============================
-    flyway:
-        enabled: false
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    validate-on-migrate: true
+
+app:
+  seed:
+    enabled: false
+  security:
+    rate-limit:
+      login:
+        attempts: 5
+        minutes: 1

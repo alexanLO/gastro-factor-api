@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 
 import br.com.gastrofactorapi.application.command.CalculatorCommand;
+import br.com.gastrofactorapi.application.exceptions.ApplicationBusinessException;
+import br.com.gastrofactorapi.application.exceptions.ApplicationNotFoundException;
 import br.com.gastrofactorapi.application.domain.model.Calculator;
 import br.com.gastrofactorapi.application.domain.model.FoodProfile;
 import br.com.gastrofactorapi.application.domain.service.calculator.strategy.CalculatorStrategy;
-import br.com.gastrofactorapi.infrastructure.exceptions.BusinessException;
-import br.com.gastrofactorapi.infrastructure.exceptions.NotFoundException;
 import br.com.gastrofactorapi.ports.input.CalculatorUseCase;
 import br.com.gastrofactorapi.ports.output.FoodProfilePort;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +27,7 @@ public class CalculatorService implements CalculatorUseCase {
         log.info(" [CalculatorService] Iniciando chamada de calculo com os dados: {}", command);
 
         FoodProfile profileFood = foodProfilePort.getByName(command.foodName())
-                .orElseThrow(() -> new NotFoundException(
+                .orElseThrow(() -> new ApplicationNotFoundException(
                         "Alimento não encontrado para nome: " + command.foodName()));
 
         log.debug("Alimento encontrado com nome: {}", profileFood.foodName());
@@ -35,7 +35,7 @@ public class CalculatorService implements CalculatorUseCase {
         Calculator result = caculatorStrategy.stream()
                 .filter(s -> s.supports(command.typeWeight()))
                 .findFirst()
-                .orElseThrow(() -> new BusinessException(HttpStatus.BAD_REQUEST.value(),
+                .orElseThrow(() -> new ApplicationBusinessException(HttpStatus.BAD_REQUEST.value(),
                         "Tipo de peso não suportado"))
                 .calculate(command, profileFood);
 

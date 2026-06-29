@@ -2,6 +2,7 @@ package br.com.gastrofactorapi.infrastructure.security;
 
 import java.io.IOException;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -20,8 +21,11 @@ public class RateLimitFilter extends OncePerRequestFilter {
 
     private final RateLimitConfig rateLimitConfig;
 
-    private final int numberOfattempts = 5;
-    private final int minutes = 1;
+    @Value("${app.security.rate-limit.login.attempts:5}")
+    private int numberOfattempts;
+
+    @Value("${app.security.rate-limit.login.minutes:1}")
+    private int minutes;
 
     @Override
     protected void doFilterInternal(
@@ -37,8 +41,11 @@ public class RateLimitFilter extends OncePerRequestFilter {
 
             if (!bucket.tryConsume(1)) {
                 response.setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
+                response.setHeader("Retry-After", String.valueOf(minutes * 60));
+                response.setHeader("X-RateLimit-Limit", String.valueOf(numberOfattempts));
+                response.setHeader("X-RateLimit-Window-Minutes", String.valueOf(minutes));
 
-                response.getWriter().write("Muitas tentativas. Tente novamente em 5 minuto.");
+                response.getWriter().write("Muitas tentativas. Tente novamente em " + minutes + " minuto(s).");
 
                 return;
             }

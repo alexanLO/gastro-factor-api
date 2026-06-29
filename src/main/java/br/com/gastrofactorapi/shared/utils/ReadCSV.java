@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
@@ -23,10 +24,13 @@ import br.com.gastrofactorapi.adapters.output.persistence.calculator.repository.
 import br.com.gastrofactorapi.adapters.output.persistence.calculator.repository.FoodProfileRespository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Component
 @Transactional
 @RequiredArgsConstructor
+@ConditionalOnProperty(value = "app.seed.enabled", havingValue = "true")
 public class ReadCSV implements CommandLineRunner {
 
 	private final FoodProfileRespository foodProfileRepository;
@@ -41,8 +45,7 @@ public class ReadCSV implements CommandLineRunner {
 		boolean hasData = foodProfileRepository.count() > 0;
 
 		if (hasData) {
-			System.out.println(
-					"Tabela food_catalog já possui dados. Seed ignorado.");
+			log.info("Tabela food_catalog ja possui dados. Seed ignorado.");
 			return;
 		}
 
@@ -129,14 +132,9 @@ public class ReadCSV implements CommandLineRunner {
 
 			preparationRepository.saveAll(preparations);
 
-			System.out.println(
-					"CSV importado com sucesso!");
-
-			System.out.println(
-					"Nutritions: " + nutritions.size());
-
-			System.out.println(
-					"Preparations: " + preparations.size());
+			log.info("CSV importado com sucesso.");
+			log.info("Nutritions: {}", nutritions.size());
+			log.info("Preparations: {}", preparations.size());
 		}
 	}
 

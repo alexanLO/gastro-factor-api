@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,13 +30,13 @@ public class RecipeController implements RecipeSwagger {
 
     @Override
     @PostMapping
-    public ResponseEntity<UUID> save(@Valid RecipeRequest request) {
-        log.info("[RecipeController] Iniciando chamada para slavar receita.");
+    public ResponseEntity<UUID> save(@Valid @RequestBody RecipeRequest request) {
+        log.info("[RecipeController] Iniciando chamada para salvar receita: {}.", request);
 
-        recipeUseCase.save(recipeApiMapper.toCommandRecipe(request));
+        UUID recipeId = recipeUseCase.save(recipeApiMapper.toCommandRecipe(request));
 
         log.info("[RecipeController] Receita salva com sucesso.");
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        return ResponseEntity.status(HttpStatus.CREATED).body(recipeId);
     }
 
     @Override

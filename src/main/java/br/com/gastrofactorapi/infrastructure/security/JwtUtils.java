@@ -2,6 +2,7 @@ package br.com.gastrofactorapi.infrastructure.security;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 import javax.crypto.SecretKey;
@@ -18,12 +19,25 @@ import io.jsonwebtoken.security.Keys;
 @Component
 public class JwtUtils {
 
+    private static final int MIN_SECRET_BYTES = 32;
     private final SecretKey key;
     private final Integer timeToken = 1000 * 60 * 15;
 
     public JwtUtils(
             @Value("${jwt.secret}") String secret) {
-        this.key = Keys.hmacShaKeyFor(secret.getBytes());
+        validateSecret(secret);
+        this.key = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
+    }
+
+    private void validateSecret(String secret) {
+        if (secret == null || secret.isBlank()) {
+            throw new IllegalStateException("jwt.secret nao pode ser vazio.");
+        }
+
+        int secretSizeInBytes = secret.getBytes(StandardCharsets.UTF_8).length;
+        if (secretSizeInBytes < MIN_SECRET_BYTES) {
+            throw new IllegalStateException("jwt.secret deve ter no minimo 32 bytes para uso com HS256.");
+        }
     }
 
     public String generateToken(UserEntity user) {

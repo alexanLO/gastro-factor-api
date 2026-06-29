@@ -58,47 +58,53 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
 
         String token = authHeader.substring(7);
+        try {
+            String email = jwtUtils.extractEmail(token);
 
-        // extraiToken
-        String email = jwtUtils.extractEmail(token);
-
-        // verifica blacklist
-        if (jwtBlacklistRepository.existsByToken(token)) {
-
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-
-            response.getWriter().write("Token invalidado");
-
+            if (jwtBlacklistRepository.existsByToken(token)) {
+            writeUnauthorized(response, "Token invalidado");
             return;
-        }
+            }
 
-        if (email != null &&
+            if (email != null &&
                 !email.isBlank() &&
                 SecurityContextHolder.getContext()
-                        .getAuthentication() == null) {
+                    .getAuthentication() == null) {
 
             var user = userRepository.findByEmail(email)
-                    .orElseThrow();
+                .orElse(null);
 
-            if (jwtUtils.isTokenValid(token, user.getEmail())) {
-
-                UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-                        user,
-                        null,
-                        List.of(
-                                new SimpleGrantedAuthority(
-                                        "ROLE_" + user.getRole())));
-
-                authToken.setDetails(
-                        new WebAuthenticationDetailsSource()
-                                .buildDetails(request));
-
-                SecurityContextHolder.getContext()
-                        .setAuthentication(authToken);
+            if (user == null || !jwtUtils.isTokenValid(token, user.getEmail())) {
+                writeUnauthorized(response, "Token invalido");
+                return;
             }
+
+            UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
+                user,
+                null,
+                List.of(
+                    new SimpleGrantedAuthority(
+                        "ROLE_" + user.getRole())));
+
+            authToken.setDetails(
+                new WebAuthenticationDetailsSource()
+                    .buildDetails(request));
+
+            SecurityContextHolder.getContext()
+                .setAuthentication(authToken);
+            }
+        } catch (Exception ex) {
+            log.warn("Falha ao validar token JWT: {}", ex.getMessage());
+            writeUnauthorized(response, "Token invalido");
+            return;
         }
 
         filterChain.doFilter(request, response);
     }
+
+        private void writeUnauthorized(HttpServletResponse response, String message) throws IOException {
+        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        response.getWriter().write(message);
+        }
 
 }

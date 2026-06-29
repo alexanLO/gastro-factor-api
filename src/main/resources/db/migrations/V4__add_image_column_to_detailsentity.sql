@@ -1,0 +1,2 @@
+ALTER TABLE detailsentity
+ADD COLUMN IF NOT EXISTS image TEXT;

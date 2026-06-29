@@ -13,7 +13,7 @@
 
     <groupId>br.com.gastrofactorapi</groupId>
     <artifactId>gastrofactorapi</artifactId>
-    <version>0.0.4</version>
+    <version>0.0.5</version>
     <name>gastrofactorapi</name>
 
     <properties>

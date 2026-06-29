@@ -22,7 +22,7 @@ public class RateLimitConfig {
     private Bucket createBucket(int capacity, int minutes) {
 
         Bandwidth limit = Bandwidth.builder()
-                .capacity(minutes)
+                .capacity(capacity)
                 .refillIntervally(minutes, Duration.ofMinutes(minutes))
                 .build();
 
