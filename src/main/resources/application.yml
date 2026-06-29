@@ -133,4 +133,4 @@ spring:
 # JWT
 #==============================
 jwt:
-  secret: ${JWT_SECRET:"minha_chave_super_secreta_com_mais_de_32_caracteres_123456"}
+  secret: ${JWT_SECRET}
