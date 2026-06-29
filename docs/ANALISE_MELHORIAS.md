@@ -266,7 +266,7 @@ Comando validado:
 - [X] Habilitar Flyway e escrever migracoes reais.
 - [X] Criar indice unico para email.
 - [X] Criar suites de teste de dominio, seguranca e integracao.
-- [ ] Endurecer application-default para uso local apenas.
+- [X] Endurecer application-default para uso local apenas.
 
 ## 7. Resultado da verificacao executada
 
