@@ -22,6 +22,8 @@ public class DetailsEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String name;
+    @Lob
+    private String image;
     private Integer servings;
     private String category;
 }
