@@ -93,7 +93,7 @@ spring:
         username: sa
         password: 
     sql:
-        init:
+      init:
         mode: never
     h2:
         console:
@@ -109,7 +109,7 @@ spring:
         properties:
             hibernate:
                 show-sql: true
-                format-sql: true  
+                format-sql: true
 
 #==============================
 # Flyway
