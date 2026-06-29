@@ -31,7 +31,7 @@ public class RecipeController implements RecipeSwagger {
     @Override
     @PostMapping
     public ResponseEntity<UUID> save(@Valid @RequestBody RecipeRequest request) {
-        log.info("[RecipeController] Iniciando chamada para slavar receita.");
+        log.info("[RecipeController] Iniciando chamada para salvar receita: {}.", request);
 
         UUID recipeId = recipeUseCase.save(recipeApiMapper.toCommandRecipe(request));
 

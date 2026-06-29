@@ -32,4 +32,5 @@ Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJsdWlzYXNvbnNhQGVtYWlsLmNvb
 POST http://localhost:8080/v1/auth/refresh/bd995c1b-fa46-4385-be1e-b289ec6dc29a
 Content-Type: application/json
 
-{}
+
+{"details":{"name":"wdqw","image":"","servings":1,"category":"Entrada"},"ingredients":[{"name":"dqwdqw","netWeight":1,"correctionFactor":1,"grossWeight":1,"cookingFactor":1,"totalQuantity":1},{"name":"dqwd","netWeight":1,"correctionFactor":1,"grossWeight":1,"cookingFactor":1,"totalQuantity":1},{"name":"qd","netWeight":1,"correctionFactor":1,"grossWeight":1,"cookingFactor":1,"totalQuantity":1}],"nutritional":{"calories":1,"protein":1,"totalFat":1,"carbs":1},"preparationMethods":[{"ordinationId":1,"title":"wdqd","description":"wdqwd"},{"ordinationId":2,"title":"wdqw","description":"dqwd"}]}
