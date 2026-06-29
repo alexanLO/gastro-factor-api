@@ -97,7 +97,7 @@ spring:
       enabled: ALWAYS
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:GastroFactor}
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:GastroFactor}?sslmode=${DB_SSLMODE:disable}
     username: ${DB_USER:postgres}
     password: ${DB_PASS:admin}
 
@@ -121,7 +121,7 @@ spring:
       mode: never
   flyway:
     enabled: true
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:GastroFactor}
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:GastroFactor}?sslmode=${DB_SSLMODE:disable}
     user: ${DB_USER:postgres}
     password: ${DB_PASS:admin}
 
@@ -133,7 +133,7 @@ spring:
 # JWT
 #==============================
 jwt:
-  secret: ${JWT_SECRET}
+  secret: ${JWT_SECRET:fb790f3d45d9ac56e3d033cb01688c66032f5f54bfa83635905c62a93d4548c7}
 
 app:
   seed:
