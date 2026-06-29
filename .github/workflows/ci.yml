@@ -19,7 +19,10 @@ jobs:
 
     env:
       JWT_SECRET: ${{ secrets.JWT_SECRET }}
-      MIN_LINE_COVERAGE: '0.19'
+      MIN_LINE_COVERAGE_DEFAULT: '0.19'
+      MIN_LINE_COVERAGE_MAIN: '0.25'
+      MIN_LINE_COVERAGE_RELEASE: '0.50'
+      MIN_LINE_COVERAGE_TAG: '0.70'
 
     steps:
       - name: Checkout
@@ -50,6 +53,21 @@ jobs:
         shell: bash
         run: |
           REPORT_FILE="target/site/jacoco/jacoco.csv"
+          TARGET_BRANCH="${GITHUB_REF_NAME}"
+
+          if [ "${GITHUB_EVENT_NAME}" = "pull_request" ]; then
+            TARGET_BRANCH="${GITHUB_BASE_REF}"
+          fi
+
+          MIN_LINE_COVERAGE="${MIN_LINE_COVERAGE_DEFAULT}"
+
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            MIN_LINE_COVERAGE="${MIN_LINE_COVERAGE_TAG}"
+          elif [[ "${TARGET_BRANCH}" == "main" || "${TARGET_BRANCH}" == "master" ]]; then
+            MIN_LINE_COVERAGE="${MIN_LINE_COVERAGE_MAIN}"
+          elif [[ "${TARGET_BRANCH}" == release/* ]]; then
+            MIN_LINE_COVERAGE="${MIN_LINE_COVERAGE_RELEASE}"
+          fi
 
           if [ ! -f "$REPORT_FILE" ]; then
             echo "Coverage report not found at $REPORT_FILE"
@@ -68,6 +86,7 @@ jobs:
           ACTUAL_LINE_PERCENT=$(awk -v v="$ACTUAL_LINE_COVERAGE" 'BEGIN {printf "%.2f", v * 100}')
           MIN_LINE_PERCENT=$(awk -v v="$MIN_LINE_COVERAGE" 'BEGIN {printf "%.2f", v * 100}')
 
+          echo "Target branch: ${TARGET_BRANCH}"
           echo "Line coverage: ${ACTUAL_LINE_PERCENT}%"
           echo "Minimum required: ${MIN_LINE_PERCENT}%"
 

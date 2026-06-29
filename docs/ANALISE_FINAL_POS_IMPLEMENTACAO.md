@@ -118,5 +118,9 @@ Com os ajustes de hardening acima (especialmente no JWT filter) e evolucao de co
 
 Implementacao do gate de cobertura:
 - Workflow: `.github/workflows/ci.yml`.
-- Regra atual (progressiva): cobertura de linhas minima de 19% (`MIN_LINE_COVERAGE=0.19`), com evolucao planejada para 50% e depois 70%.
+- Regra atual (progressiva e automatica por contexto):
+  - `default` (demais branches): 19% (`MIN_LINE_COVERAGE_DEFAULT=0.19`)
+  - `main`/`master`: 25% (`MIN_LINE_COVERAGE_MAIN=0.25`)
+  - `release/*`: 50% (`MIN_LINE_COVERAGE_RELEASE=0.50`)
+  - `tags` (release versionada): 70% (`MIN_LINE_COVERAGE_TAG=0.70`)
 - Fonte de dados: `target/site/jacoco/jacoco.csv` gerado pelo JaCoCo no `mvn verify`.
