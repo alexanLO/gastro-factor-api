@@ -260,7 +260,7 @@ Comando validado:
 - [X] Trocar logout para POST com body/header.
 - [X] Corrigir blacklist para access token.
 - [X] Reconfigurar SecurityConfig com autenticacao em /v1/recipes e /v1/calculator.
-- [ ] Corrigir regra de RateLimitConfig (capacity).
+- [X] Corrigir regra de RateLimitConfig (capacity).
 - [ ] Corrigir RecipeController (RequestBody e retorno coerente).
 - [ ] Adicionar validacoes em RecipeRequest e filhos.
 - [ ] Habilitar Flyway e escrever migracoes reais.
