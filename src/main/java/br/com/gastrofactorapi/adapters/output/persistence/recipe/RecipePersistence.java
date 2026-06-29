@@ -10,6 +10,7 @@ import br.com.gastrofactorapi.adapters.output.persistence.recipe.mapper.RecipePe
 import br.com.gastrofactorapi.adapters.output.persistence.recipe.repository.RecipeRepository;
 import br.com.gastrofactorapi.application.command.RecipeCommand;
 import br.com.gastrofactorapi.ports.output.RecipePort;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -34,6 +35,7 @@ public class RecipePersistence implements RecipePort {
     }
 
     @Override
+    @Transactional
     public List<RecipeCommand> listAll() {
         log.info("[RecipePersistence] Iniciando a listagem das receita no banco de dados.");
 

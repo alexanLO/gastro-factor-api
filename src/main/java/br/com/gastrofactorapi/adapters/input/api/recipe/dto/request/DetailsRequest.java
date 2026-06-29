@@ -14,6 +14,7 @@ public class DetailsRequest {
 
   @NotBlank(message = "Nome é obrigatório")
   private String name;
+  private String image;
   private Integer servings;
   private String category;
 }
