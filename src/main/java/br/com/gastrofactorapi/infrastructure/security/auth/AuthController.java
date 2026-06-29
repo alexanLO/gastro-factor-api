@@ -9,12 +9,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.gastrofactorapi.infrastructure.exceptions.BusinessException;
 import br.com.gastrofactorapi.infrastructure.security.JwtUtils;
 import br.com.gastrofactorapi.infrastructure.security.auth.dto.AuthResponse;
+import br.com.gastrofactorapi.infrastructure.security.auth.dto.LogoutRequest;
 import br.com.gastrofactorapi.infrastructure.security.auth.entity.JwtBlacklistEntity;
 import br.com.gastrofactorapi.infrastructure.security.auth.entity.RefreshTokenEntity;
 import br.com.gastrofactorapi.infrastructure.security.auth.entity.UserEntity;
@@ -22,6 +24,7 @@ import br.com.gastrofactorapi.infrastructure.security.auth.enums.ProvidersEnum;
 import br.com.gastrofactorapi.infrastructure.security.auth.repository.JwtBlacklistRepository;
 import br.com.gastrofactorapi.infrastructure.security.auth.repository.RefreshTokenRepository;
 import br.com.gastrofactorapi.infrastructure.security.auth.repository.UserRepository;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -104,10 +107,18 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
-    @PostMapping("/logout/{accessToken}/{refreshToken}")
-    public ResponseEntity<Void> logout(@PathVariable("accessToken") String accessToken,
-            @PathVariable("refreshToken") String refreshToken) {
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout(
+            @RequestHeader(value = "Authorization", required = false) String authorization,
+            @Valid @RequestBody LogoutRequest request) {
         log.info("Chamando requisição para logout.");
+
+        if (authorization == null || authorization.isBlank() || !authorization.startsWith("Bearer ")) {
+            throw new BusinessException(HttpStatus.UNAUTHORIZED.value(), "Access token inválido");
+        }
+
+        String accessToken = authorization.substring(7);
+        String refreshToken = request.refreshToken();
 
         RefreshTokenEntity refreshTokenResponse = refreshTokenRepository.findByToken(refreshToken)
                 .orElseThrow(() -> new BusinessException(HttpStatus.UNAUTHORIZED.value(), "Refresh token inválido"));

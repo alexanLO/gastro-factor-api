@@ -257,7 +257,7 @@ Comando validado:
 ## 6. Checklist de implementacao rapida
 
 - [X] Remover fallback de jwt.secret e validar no startup.
-- [ ] Trocar logout para POST com body/header.
+- [X] Trocar logout para POST com body/header.
 - [ ] Corrigir blacklist para access token.
 - [ ] Reconfigurar SecurityConfig com autenticacao em /v1/recipes e /v1/calculator.
 - [ ] Corrigir regra de RateLimitConfig (capacity).
