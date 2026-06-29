@@ -189,6 +189,7 @@ Veja o documento tecnico completo em:
 
 - `docs/DOCUMENTACAO_MICROSSERVICO.md`
 - `docs/CONFIGURACAO_GITHUB_RENDER.md`
+- `docs/CONVENTIONAL_COMMITS.md`
 
 ## Licenca
 
