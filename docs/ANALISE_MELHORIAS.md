@@ -259,7 +259,7 @@ Comando validado:
 - [X] Remover fallback de jwt.secret e validar no startup.
 - [X] Trocar logout para POST com body/header.
 - [X] Corrigir blacklist para access token.
-- [ ] Reconfigurar SecurityConfig com autenticacao em /v1/recipes e /v1/calculator.
+- [X] Reconfigurar SecurityConfig com autenticacao em /v1/recipes e /v1/calculator.
 - [ ] Corrigir regra de RateLimitConfig (capacity).
 - [ ] Corrigir RecipeController (RequestBody e retorno coerente).
 - [ ] Adicionar validacoes em RecipeRequest e filhos.
