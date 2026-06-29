@@ -8,6 +8,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import br.com.gastrofactorapi.application.exceptions.ApplicationBusinessException;
 import br.com.gastrofactorapi.infrastructure.exceptions.response.ApiErrorResponse;
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,14 +28,28 @@ public class BusinessExceptionHandler {
     @ExceptionHandler(BusinessException.class)
     public ResponseEntity<Object> handleBusinessException(BusinessException ex) {
 
-        HttpStatus status = HttpStatus.resolve(Integer.parseInt(ex.getErroCode()));
+        HttpStatus status;
+        try {
+            status = HttpStatus.resolve(Integer.parseInt(ex.getErroCode()));
+        } catch (NumberFormatException numberFormatException) {
+            status = HttpStatus.BAD_REQUEST;
+        }
+
         status = status != null ? status : HttpStatus.BAD_REQUEST;
 
         var apiErro = new ApiErrorResponse(status, ex);
         return buildResponseEntity(apiErro, ex);
     }
 
-    @SuppressWarnings("null") // TODO verificar caso
+    @ExceptionHandler(ApplicationBusinessException.class)
+    public ResponseEntity<Object> handleApplicationBusinessException(ApplicationBusinessException ex) {
+        HttpStatus status = HttpStatus.resolve(ex.getStatusCode());
+        status = status != null ? status : HttpStatus.BAD_REQUEST;
+
+        var apiErro = new ApiErrorResponse(status, ex);
+        return buildResponseEntity(apiErro, ex);
+    }
+
     private ResponseEntity<Object> buildResponseEntity(ApiErrorResponse apiError, Exception ex) {
         log.error("Excecao sendo capturada, APIErrorCode: {}, Menssagem: {}, Excecao ", apiError.getCodeError(),
                 apiError.getMessage(), ex);

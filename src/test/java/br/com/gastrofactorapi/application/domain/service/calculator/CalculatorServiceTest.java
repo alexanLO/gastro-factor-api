@@ -16,12 +16,12 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import br.com.gastrofactorapi.application.command.CalculatorCommand;
+import br.com.gastrofactorapi.application.exceptions.ApplicationBusinessException;
+import br.com.gastrofactorapi.application.exceptions.ApplicationNotFoundException;
 import br.com.gastrofactorapi.application.domain.model.Calculator;
 import br.com.gastrofactorapi.application.domain.model.FoodProfile;
 import br.com.gastrofactorapi.application.domain.service.calculator.strategy.CalculatorStrategy;
 import br.com.gastrofactorapi.application.enums.TypeWeightEnum;
-import br.com.gastrofactorapi.infrastructure.exceptions.BusinessException;
-import br.com.gastrofactorapi.infrastructure.exceptions.NotFoundException;
 import br.com.gastrofactorapi.ports.output.FoodProfilePort;
 
 @ExtendWith(MockitoExtension.class)
@@ -46,7 +46,7 @@ class CalculatorServiceTest {
         when(foodProfilePort.getByName("banana")).thenReturn(Optional.empty());
 
         assertThatThrownBy(() -> calculatorService.calculation(command))
-                .isInstanceOf(NotFoundException.class)
+            .isInstanceOf(ApplicationNotFoundException.class)
                 .hasMessageContaining("Alimento não encontrado");
     }
 
@@ -75,7 +75,7 @@ class CalculatorServiceTest {
         when(calculatorStrategy.supports(TypeWeightEnum.COOKED)).thenReturn(false);
 
         assertThatThrownBy(() -> calculatorService.calculation(command))
-                .isInstanceOf(BusinessException.class)
-                .satisfies(ex -> assertThat(((BusinessException) ex).getErroCode()).isEqualTo("400"));
+            .isInstanceOf(ApplicationBusinessException.class)
+            .satisfies(ex -> assertThat(((ApplicationBusinessException) ex).getStatusCode()).isEqualTo(400));
     }
 }

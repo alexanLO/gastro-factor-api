@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.gastrofactorapi.infrastructure.exceptions.BusinessException;
 import br.com.gastrofactorapi.infrastructure.security.JwtUtils;
 import br.com.gastrofactorapi.infrastructure.security.auth.dto.AuthResponse;
+import br.com.gastrofactorapi.infrastructure.security.auth.dto.LoginRequest;
 import br.com.gastrofactorapi.infrastructure.security.auth.dto.LogoutRequest;
+import br.com.gastrofactorapi.infrastructure.security.auth.dto.RegisterRequest;
 import br.com.gastrofactorapi.infrastructure.security.auth.entity.JwtBlacklistEntity;
 import br.com.gastrofactorapi.infrastructure.security.auth.entity.RefreshTokenEntity;
 import br.com.gastrofactorapi.infrastructure.security.auth.entity.UserEntity;
@@ -41,18 +43,22 @@ public class AuthController {
     private final PasswordEncoder passwordEncoder;
 
     @PostMapping("/register")
-    public ResponseEntity<AuthResponse> register(@RequestBody UserEntity entity) {
-        log.info("Chamando requisição para o cadastro do usuario com nome = {} e email = {}", entity.getName(),
-                entity.getEmail());
+        public ResponseEntity<AuthResponse> register(@Valid @RequestBody RegisterRequest request) {
+        log.info("Chamando requisição para o cadastro do usuario com nome = {} e email = {}", request.name(),
+            request.email());
 
-        userRepository.findByEmail(entity.getEmail())
+        userRepository.findByEmail(request.email())
                 .ifPresent(user -> {
                     throw new BusinessException(
                             HttpStatus.CONFLICT.value(),
                             "Já existe um usuário com este email.");
                 });
 
-        entity.setPassword(passwordEncoder.encode(entity.getPassword()));
+        UserEntity entity = new UserEntity();
+        entity.setName(request.name());
+        entity.setEmail(request.email());
+        entity.setPassword(passwordEncoder.encode(request.password()));
+        entity.setOccupation(request.occupation());
         entity.setProvider(ProvidersEnum.LOCAL.name());
         entity.setRole("USER");
 
@@ -65,13 +71,13 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<AuthResponse> login(@RequestBody UserEntity entity) {
-        log.info("Chamando requisição para logar usuario com email: {}", entity.getEmail());
+    public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest request) {
+        log.info("Chamando requisição para logar usuario com email: {}", request.email());
 
-        var user = userRepository.findByEmail(entity.getEmail())
+        var user = userRepository.findByEmail(request.email())
                 .orElseThrow(() -> new BusinessException(HttpStatus.UNAUTHORIZED.value(), "Email ou senha invalida."));
 
-        boolean passwordMatches = passwordEncoder.matches(entity.getPassword(), user.getPassword());
+        boolean passwordMatches = passwordEncoder.matches(request.password(), user.getPassword());
 
         if (!passwordMatches) {
             throw new BusinessException(HttpStatus.UNAUTHORIZED.value(), "Email ou senha inválidos");

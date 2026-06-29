@@ -134,3 +134,12 @@ spring:
 #==============================
 jwt:
   secret: ${JWT_SECRET}
+
+app:
+  seed:
+    enabled: false
+  security:
+    rate-limit:
+      login:
+        attempts: ${RATE_LIMIT_LOGIN_ATTEMPTS:5}
+        minutes: ${RATE_LIMIT_LOGIN_MINUTES:1}

@@ -11,3 +11,7 @@ spring:
 #==============================
 jwt:
   secret: ${JWT_SECRET_LOCAL:minha_chave_super_secreta_com_mais_de_32_caracteres_123456}
+
+app:
+  seed:
+    enabled: true

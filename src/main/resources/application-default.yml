@@ -119,3 +119,12 @@ spring:
     enabled: true
     baseline-on-migrate: true
     validate-on-migrate: true
+
+app:
+  seed:
+    enabled: false
+  security:
+    rate-limit:
+      login:
+        attempts: 5
+        minutes: 1

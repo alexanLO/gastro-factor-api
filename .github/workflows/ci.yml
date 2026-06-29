@@ -19,6 +19,7 @@ jobs:
 
     env:
       JWT_SECRET: ${{ secrets.JWT_SECRET }}
+      MIN_LINE_COVERAGE: '0.19'
 
     steps:
       - name: Checkout
@@ -44,3 +45,35 @@ jobs:
 
       - name: Build and run tests
         run: ./mvnw -B verify
+
+      - name: Enforce progressive coverage gate (line)
+        shell: bash
+        run: |
+          REPORT_FILE="target/site/jacoco/jacoco.csv"
+
+          if [ ! -f "$REPORT_FILE" ]; then
+            echo "Coverage report not found at $REPORT_FILE"
+            exit 1
+          fi
+
+          read -r LINE_MISSED LINE_COVERED < <(awk -F',' 'NR>1 {missed += $8; covered += $9} END {print missed " " covered}' "$REPORT_FILE")
+          TOTAL_LINES=$((LINE_MISSED + LINE_COVERED))
+
+          if [ "$TOTAL_LINES" -eq 0 ]; then
+            echo "No lines found in coverage report."
+            exit 1
+          fi
+
+          ACTUAL_LINE_COVERAGE=$(awk -v covered="$LINE_COVERED" -v total="$TOTAL_LINES" 'BEGIN {printf "%.4f", covered / total}')
+          ACTUAL_LINE_PERCENT=$(awk -v v="$ACTUAL_LINE_COVERAGE" 'BEGIN {printf "%.2f", v * 100}')
+          MIN_LINE_PERCENT=$(awk -v v="$MIN_LINE_COVERAGE" 'BEGIN {printf "%.2f", v * 100}')
+
+          echo "Line coverage: ${ACTUAL_LINE_PERCENT}%"
+          echo "Minimum required: ${MIN_LINE_PERCENT}%"
+
+          if awk -v actual="$ACTUAL_LINE_COVERAGE" -v min="$MIN_LINE_COVERAGE" 'BEGIN {exit !(actual >= min)}'; then
+            echo "Coverage gate passed."
+          else
+            echo "Coverage gate failed."
+            exit 1
+          fi
