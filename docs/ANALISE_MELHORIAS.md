@@ -264,7 +264,7 @@ Comando validado:
 - [X] Corrigir RecipeController (RequestBody e retorno coerente).
 - [X] Adicionar validacoes em RecipeRequest e filhos.
 - [X] Habilitar Flyway e escrever migracoes reais.
-- [ ] Criar indice unico para email.
+- [X] Criar indice unico para email.
 - [ ] Criar suites de teste de dominio, seguranca e integracao.
 - [ ] Endurecer application-default para uso local apenas.
 
