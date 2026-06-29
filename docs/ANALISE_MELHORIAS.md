@@ -261,7 +261,7 @@ Comando validado:
 - [X] Corrigir blacklist para access token.
 - [X] Reconfigurar SecurityConfig com autenticacao em /v1/recipes e /v1/calculator.
 - [X] Corrigir regra de RateLimitConfig (capacity).
-- [ ] Corrigir RecipeController (RequestBody e retorno coerente).
+- [X] Corrigir RecipeController (RequestBody e retorno coerente).
 - [ ] Adicionar validacoes em RecipeRequest e filhos.
 - [ ] Habilitar Flyway e escrever migracoes reais.
 - [ ] Criar indice unico para email.
