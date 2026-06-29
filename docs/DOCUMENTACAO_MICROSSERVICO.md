@@ -163,21 +163,22 @@ Base path: `http://localhost:8080`
   "ingredients": [
     {
       "name": "Tomate",
-      "netWeight": "200",
-      "correctionFactor": "1.1",
-      "grossWeight": "220",
-      "cookingFactor": "0.9",
-      "totalQuantity": "198"
+      "netWeight": 200,
+      "correctionFactor": 1.1,
+      "grossWeight": 220,
+      "cookingFactor": 0.9,
+      "totalQuantity": 198
     }
   ],
   "nutritional": {
-    "calories": "350",
-    "protein": "20",
-    "totalFat": "15",
-    "carbs": "30"
+    "calories": 350,
+    "protein": 20,
+    "totalFat": 15,
+    "carbs": 30
   },
   "preparationMethods": [
     {
+      "ordinationId": 1,
       "title": "Cozinhar",
       "description": "Cozinhe os ingredientes por 10 minutos."
     }

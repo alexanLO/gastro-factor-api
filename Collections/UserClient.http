@@ -21,17 +21,15 @@ Content-Type: application/json
 
 POST http://localhost:8080/v1/auth/logout
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJsdWlzYXNvbnNhQGVtYWlsLmNvbSIsInJvbGUiOiJVU0VSIiwicHJvdmlkZXIiOiJMT0NBTCIsImlhdCI6MTc4MjUzMTI2OCwiZXhwIjoxNzgyNTMyMTY4fQ.RqlddLLcv0ZVSZFby-dqg9KJ4oT6_kZJzkUeWWqIJUxIpWbV6k2FTmOq-41nA-ZH
 
 {
-  "accessToken": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJsdWlzYXNvbnNhQGVtYWlsLmNvbSIsInJvbGUiOiJVU0VSIiwicHJvdmlkZXIiOiJMT0NBTCIsImlhdCI6MTc4MjUzMTI2OCwiZXhwIjoxNzgyNTMyMTY4fQ.RqlddLLcv0ZVSZFby-dqg9KJ4oT6_kZJzkUeWWqIJUxIpWbV6k2FTmOq-41nA-ZH",
   "refreshToken": "bd995c1b-fa46-4385-be1e-b289ec6dc29a"
 }
 
 ###
 
-POST http://localhost:8080/v1/auth/refresh
+POST http://localhost:8080/v1/auth/refresh/bd995c1b-fa46-4385-be1e-b289ec6dc29a
 Content-Type: application/json
 
-{
-  "refreshToken": "bd995c1b-fa46-4385-be1e-b289ec6dc29a"
-}
+{}
