@@ -84,6 +84,9 @@ server:
 #=========================
 # * Depois configurar as variaveis db_host, db_port e etc em um ambiente de deploy
 spring:
+  config:
+    activate:
+      on-profile: prod
   security:
     oauth2:
       client:
