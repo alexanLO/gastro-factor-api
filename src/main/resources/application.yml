@@ -124,11 +124,11 @@ spring:
       mode: never
   flyway:
     enabled: true
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:GastroFactor}?sslmode=${DB_SSLMODE:disable}
-    user: ${DB_USER:postgres}
-    password: ${DB_PASS:admin}
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME:gastrofactor}?sslmode=${DB_SSLMODE}
+    user: ${DB_USER}
+    password: ${DB_PASS}
 
-    locations: classpath:db/migrations
+    locations: filesystem:src/main/resources/db/migrations
     baseline-on-migrate: true
     validate-on-migrate: true
 
@@ -136,7 +136,7 @@ spring:
 # JWT
 #==============================
 jwt:
-  secret: ${JWT_SECRET:fb790f3d45d9ac56e3d033cb01688c66032f5f54bfa83635905c62a93d4548c7}
+  secret: ${JWT_SECRET}
 
 app:
   seed:
